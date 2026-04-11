@@ -109,4 +109,8 @@ app.post("/api/explain", async (req, res) => {
   }
 });
 
-app.listen(5000, () => console.log("Server running on http://localhost:5000"));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  const url = process.env.RENDER_EXTERNAL_URL || `http://localhost:${PORT}`;
+  console.log(`Server running on ${url}`);
+});
